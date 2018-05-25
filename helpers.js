@@ -4,8 +4,7 @@ const request = require('request');
 var fb_token='2ecd56ce6c9388693566b68af63b443b';
 const SendResponse = (idx, txt) => {
  request({
- url: 'https://graph.facebook.com/v2.6/me/messages',
- qs: { access_token: fb_token },
+ url: 'https://graph.facebook.com/v2.6/me/messages?access_token=2ecd56ce6c9388693566b68af63b443b',
  method: 'POST',
  json: {
  recipient: { id: idx },
