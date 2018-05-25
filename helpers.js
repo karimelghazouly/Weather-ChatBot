@@ -7,10 +7,10 @@ exports.SendText=function(txt)
 	var req=app.textRequest(txt,{
 		sessionId:'hamada'
 	})
-	request.on('response', function(response) {
+	req.on('response', function(response) {
     console.log(response);
 	});
-	request.on('error', function(error) {
+	req.on('error', function(error) {
 	    console.log(error);
 	});
 }
