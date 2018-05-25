@@ -5,10 +5,11 @@ var fb_token='2ecd56ce6c9388693566b68af63b443b';
 const SendResponse = (idx, txt) => {
  request({
  url: 'https://graph.facebook.com/v2.6/me/messages?access_token=2ecd56ce6c9388693566b68af63b443b',
+ messaging_type:"RESPONSE",
  method: 'POST',
  json: {
  recipient: { id: idx },
- message: { txt },
+ message: { text:txt },
  }
  });
  console.log("5lsna");
