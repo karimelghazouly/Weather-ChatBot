@@ -4,7 +4,7 @@ exports.SendText=function(txt)
 {
 	console.log("sending text to api ai");
 	var req=app.textRequest(txt,{
-		sessionid:'hamada'
+		sessionId:'hamada'
 	})
 	request.on('response', function(response) {
     console.log(response);
