@@ -8,7 +8,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.get('/',function(req,res){
-	console.log("wslt la hna ");
+	//console.log("wslt la hna ");
 	res.send("el btngan el ahmr");
 
 })
@@ -30,10 +30,14 @@ app.post('/webhook', (req, res) => {
 });
 
 app.get('/webhook', (req, res) => {
+  console.log("ay haga hna ");
   let VERIFY_TOKEN = "ghazouly"
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
+  console.log("mode = "+mode);
+  console.log("token = "+token);
+  console.log("cha = "+challenge);
   if (mode && token) {
     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
       console.log('WEBHOOK_VERIFIED');
