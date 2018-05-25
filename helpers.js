@@ -22,7 +22,11 @@ const GetWeatherByCityName = () => {
  request('http://api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   console.log('error:', error); 
   console.log('statusCode:', response && response.statusCode); 
-  console.log('body:', body);
+  var wea=body['weather'];
+  var desc=wea['description'];
+  var maain=body['main'];
+  var temp=maain['temp'];
+  return ("description:"+desc+" Temperature : "+temp);
 });
  
 };
@@ -56,7 +60,8 @@ exports.SendText=function(txt,id)
     		long=par[long];
 			if(cityname!='')
 			{
-				GetWeatherByCityName();
+				var ret=GetWeatherByCityName();
+				SendResponse(id,ret);
 			}    		
 
     	}
