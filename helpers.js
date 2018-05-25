@@ -19,7 +19,7 @@ const SendResponse = (senderId, text) => {
  console.log("done");
 };
 const GetWeatherByCityName = () => {
- request('api.openweathermap.org/data/2.5/weather?q='+cityname, function (error, response, body) {
+ request('api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   console.log('error:', error); 
   console.log('statusCode:', response && response.statusCode); 
 });
