@@ -15,6 +15,7 @@ app.set('view engine', 'ejs')
 */
 app.post('', (req, res) => {  
  
+ console.log("post request");
   let body = req.body;
 
   if (body.object === 'page') {
