@@ -1,8 +1,11 @@
 var exp=require('express');
 var bp=require('body-parser');
-var app = exp();
+var app = express();
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
+app.use(express.static(path.join(__dirname, 'public')))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
 app.get('/',function(req,res){
 	res.send("el btngan el ahmr");
 
@@ -40,4 +43,4 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.listen(3000, () => console.log('Webhook server is listening, port 3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Webhook server is listening, port 3000'));
