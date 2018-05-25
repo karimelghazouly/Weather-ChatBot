@@ -2,6 +2,7 @@ var express = require('express')
 const path = require('path')
 var bp=require('body-parser');
 var app = express();
+var txt=""
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
@@ -18,7 +19,7 @@ app.post('/webhook', (req, res) => {
     body.entry.forEach(function(entry) {
       let webhook_event = entry.messaging[0];
       let m = webhook_event['message']
-      let txt=m['text']
+      txt=m['text']
   	  console.log("txt === "+txt);
       console.log(webhook_event);
     });
