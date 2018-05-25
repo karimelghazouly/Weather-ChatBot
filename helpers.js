@@ -2,6 +2,7 @@ const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
 var cityname="";
+var countryname="";
 var long=0;
 var lat=0;
 var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
@@ -17,7 +18,14 @@ const SendResponse = (senderId, text) => {
  });
  console.log("done");
 };
-
+const GetWeatherByCityName = () => {
+ request('http://www.google.com', function (error, response, body) {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
+ 
+};
 exports.SendText=function(txt,id)
 {
 	console.log("------------------------>sending text to api ai");
@@ -39,7 +47,10 @@ exports.SendText=function(txt,id)
     	else
     	{
     		cityname=par['geo-city'];
-    		console.log("city = "+cityname);
+    		countryname=par['geo-country'];
+    		lat=par['lat'];
+    		long=par[long];
+    		
 
     	}
 	});
