@@ -14,11 +14,11 @@ app.get('/',function(req,res){
 app.post('/webhook', (req, res) => {  
  console.log("post request message coming");
   let body = req.body;
-  let m = req.query['text']
-  console.log("m === "+m);
   if (body.object === 'page') {
     body.entry.forEach(function(entry) {
       let webhook_event = entry.messaging[0];
+      let m = webhook_evente['text']
+  	  console.log("m === "+m);
       console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
