@@ -7,15 +7,14 @@ app.use(bp.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-/*app.get('/',function(req,res){
+app.get('/',function(req,res){
 	//console.log("wslt la hna ");
-	res.send("el btngan el ahmr");
+	res.send("hello! server is running");
 
 })
-*/
-app.post('', (req, res) => {  
- 
- console.log("post request");
+
+app.post('/webhook', (req, res) => {  
+ console.log("post request message coming");
   let body = req.body;
 
   if (body.object === 'page') {
@@ -30,7 +29,8 @@ app.post('', (req, res) => {
 
 });
 
-app.get('', (req, res) => {
+app.get('/webhook', (req, res) => {
+  console.log("Verifying webhook");
   let VERIFY_TOKEN = 'ghazouly'
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
@@ -50,4 +50,4 @@ app.get('', (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Server is running'));
+app.listen(process.env.PORT || 3000, () => console.log('Webhook server is listening, port 3000'));
