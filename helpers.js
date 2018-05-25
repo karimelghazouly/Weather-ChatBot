@@ -9,6 +9,9 @@ exports.SendText=function(txt)
 	})
 	req.on('response', function(response) {
     	console.log(response);
+    	var res=response['result'];
+    	var par=res['parameters'];
+    	console.log('keys = '+keys(par).length);
 	});
 	req.on('error', function(error) {
 	    console.log(error);
