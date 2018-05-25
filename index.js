@@ -3,6 +3,7 @@ const path = require('path')
 var bp=require('body-parser');
 var app = express();
 var txt=""
+var id=0
 var helper = require('./helpers');
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
@@ -21,8 +22,7 @@ app.post('/webhook', (req, res) => {
       let webhook_event = entry.messaging[0];
       let m = webhook_event['message']
       txt=m['text']
-  	  console.log("txt === "+txt);
-      
+  	  console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
     helper.SendText(txt);

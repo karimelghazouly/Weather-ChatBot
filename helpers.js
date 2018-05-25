@@ -18,11 +18,15 @@ exports.SendText=function(txt)
     	}
     	else
     	{
-    		
+
     	}
 	});
 	req.on('error', function(error) {
 	    console.log(error);
 	});
 	req.end();
+}
+exports.SendResponse=function(txt)
+{
+	
 }
