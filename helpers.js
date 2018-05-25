@@ -1,6 +1,9 @@
 const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
+var cityname="";
+var long=0;
+var lat=0;
 var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
 const SendResponse = (senderId, text) => {
  request({
@@ -35,7 +38,8 @@ exports.SendText=function(txt,id)
     	}
     	else
     	{
-
+    		cityname=par['geo-city'];
+    		
     	}
 	});
 	req.on('error', function(error) {
