@@ -1,18 +1,18 @@
 const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
-var fb_token='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
-const SendResponse = (idx, txt) => {
+var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
+const SendResponse = (senderId, text) => {
  request({
- url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD',
- messaging_type:"RESPONSE",
+ url: 'https://graph.facebook.com/v2.6/393368691140430/messages',
+ qs: { access_token: FACEBOOK_ACCESS_TOKEN },
  method: 'POST',
  json: {
- recipient: { id: idx },
- message: { text:txt },
+ recipient: { id: senderId },
+ message: { text },
  }
  });
- console.log("5lsna");
+ console.log("done");
 };
 
 exports.SendText=function(txt,id)
