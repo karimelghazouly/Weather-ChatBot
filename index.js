@@ -7,13 +7,13 @@ app.use(bp.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
-app.get('/',function(req,res){
+/*app.get('/',function(req,res){
 	//console.log("wslt la hna ");
 	res.send("el btngan el ahmr");
 
 })
-
-app.post('/webhook', (req, res) => {  
+*/
+app.post('', (req, res) => {  
  
   let body = req.body;
 
@@ -29,16 +29,15 @@ app.post('/webhook', (req, res) => {
 
 });
 
-app.get('/webhook', (req, res) => {
-  console.log("ay haga hna ");
+app.get('', (req, res) => {
   let VERIFY_TOKEN = 'ghazouly'
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
-  console.log("mode = "+mode);
+  /*console.log("mode = "+mode);
   console.log("token = "+token);
   console.log("original = "+VERIFY_TOKEN);
-  console.log("cha = "+challenge);
+  console.log("cha = "+challenge);*/
   if (mode && token) {
     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
       console.log('WEBHOOK_VERIFIED');
@@ -50,4 +49,4 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, () => console.log('Webhook server is listening, port 3000'));
+app.listen(process.env.PORT || 3000, () => console.log('Server is running'));
