@@ -4,6 +4,7 @@ const request = require('request');
 var fb_token='2ecd56ce6c9388693566b68af63b443b';
 exports.SendResponse=function(idx,txt)
 {
+	console.log("ana ba send respone 5od balk");
 	var send=function(idx,txt){
 		request({
 			 url: 'https://graph.facebook.com/v2.6/me/messages',
@@ -19,7 +20,7 @@ exports.SendResponse=function(idx,txt)
 
 exports.SendText=function(txt,id)
 {
-	console.log("sending text to api ai");
+	console.log("------------------------>sending text to api ai");
 	console.log("txt = "+txt);
 	var req=app.textRequest(txt,{
 		sessionId:'hamada'
