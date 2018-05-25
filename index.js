@@ -8,15 +8,14 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.get('/',function(req,res){
-	//console.log("wslt la hna ");
 	res.send("hello! server is running");
-
 })
 
 app.post('/webhook', (req, res) => {  
  console.log("post request message coming");
   let body = req.body;
-
+  let m = req.query['text']
+  console.log("m === "+m);
   if (body.object === 'page') {
     body.entry.forEach(function(entry) {
       let webhook_event = entry.messaging[0];
@@ -35,10 +34,6 @@ app.get('/webhook', (req, res) => {
   let mode = req.query['hub.mode'];
   let token = req.query['hub.verify_token'];
   let challenge = req.query['hub.challenge'];
-  /*console.log("mode = "+mode);
-  console.log("token = "+token);
-  console.log("original = "+VERIFY_TOKEN);
-  console.log("cha = "+challenge);*/
   if (mode && token) {
     if (mode === 'subscribe' && token === VERIFY_TOKEN) {
       console.log('WEBHOOK_VERIFIED');
