@@ -21,11 +21,11 @@ app.post('/webhook', (req, res) => {
       let webhook_event = entry.messaging[0];
       let m = webhook_event['message']
       txt=m['text']
-      helper.SendText(txt);
   	  console.log("txt === "+txt);
       
     });
     res.status(200).send('EVENT_RECEIVED');
+    helper.SendText(txt);
   } else {
     res.sendStatus(404);
   }
