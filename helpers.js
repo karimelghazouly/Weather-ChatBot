@@ -8,9 +8,10 @@ exports.SendText=function(txt)
 		sessionId:'hamada'
 	})
 	req.on('response', function(response) {
-    console.log(response);
+    	console.log(response);
 	});
 	req.on('error', function(error) {
 	    console.log(error);
 	});
+	req.end();
 }
