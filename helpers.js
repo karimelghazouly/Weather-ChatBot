@@ -1,6 +1,8 @@
 const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
-exports.SendText=function(txt)
+var request = require(‘request’);
+var fb_token='2ecd56ce6c9388693566b68af63b443b';
+exports.SendText=function(txt,id)
 {
 	console.log("sending text to api ai");
 	console.log("txt = "+txt);
@@ -12,9 +14,10 @@ exports.SendText=function(txt)
     	var res=response['result'];
     	var par=res['parameters'];
     	var count = Object.keys(par).length;
+    	var mess=res.fulfillment.speech;
     	if(count==0)
     	{
-
+    		SendResponse(mess,id);
     	}
     	else
     	{
@@ -26,7 +29,17 @@ exports.SendText=function(txt)
 	});
 	req.end();
 }
-exports.SendResponse=function(txt)
+exports.SendResponse=function(txt,idx)
 {
-	
+	var send=function(id,txt){
+		request({
+			url:'https://graph.facebook.com/v2.6/me/messages',
+			 qs: { access_token: fb_token },
+			 method: 'POST',
+			 json: {
+			 recipient: { id: idx },
+			 message: { txt },
+			 }
+		});
+	}
 }
