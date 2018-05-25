@@ -22,7 +22,7 @@ app.post('/webhook', (req, res) => {
       let webhook_event = entry.messaging[0];
       let m = webhook_event['message']
       txt=m['text']
-      id=webhook.sender['id'];
+      id=webhook_event.sender['id'];
   	  console.log(webhook_event);
   	  console.log("id = "+id);
     });
