@@ -12,7 +12,14 @@ exports.SendText=function(txt)
     	var res=response['result'];
     	var par=res['parameters'];
     	var count = Object.keys(par).length;
-    	console.log('keys = '+count);
+    	if(count==0)
+    	{
+
+    	}
+    	else
+    	{
+    		
+    	}
 	});
 	req.on('error', function(error) {
 	    console.log(error);
