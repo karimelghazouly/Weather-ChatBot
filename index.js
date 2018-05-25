@@ -24,10 +24,9 @@ app.post('/webhook', (req, res) => {
       txt=m['text']
       id=webhook_event.sender['id'];
   	  console.log(webhook_event);
-  	  console.log("id = "+id);
     });
     res.status(200).send('EVENT_RECEIVED');
-    helper.SendText(txt);
+    helper.SendText(txt,id);
   } else {
     res.sendStatus(404);
   }

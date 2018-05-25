@@ -18,6 +18,7 @@ exports.SendText=function(txt,id)
     	if(count==0)
     	{
     		SendResponse(mess,id);
+    		console.log("message = "+mess);
     	}
     	else
     	{
@@ -31,7 +32,7 @@ exports.SendText=function(txt,id)
 }
 exports.SendResponse=function(txt,idx)
 {
-	var send=function(id,txt){
+	var send=function(idx,txt){
 		request({
 			url:'https://graph.facebook.com/v2.6/me/messages',
 			 qs: { access_token: fb_token },
