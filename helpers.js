@@ -24,14 +24,14 @@ const GetWeatherByCityName = () => {
   console.log('statusCode:', response && response.statusCode); 
   console.log('resp :',response);
   console.log("body : "+body);
-  console.log("main : "+body['main']);
-  console.log("wea :"+body['weather']);
+  console.log("main : "+body.main);
+  console.log("wea :"+body.weather);
   //var wea=body['weather'];
   //console.log("weather = "+wea);
   //var desc=wea['description'];
   //var maain=body['main'];
   //var temp=maain['temp'];
-  return ("description:"+desc+" Temperature : "+temp);
+  //return ("description:"+desc+" Temperature : "+temp);
 });
  
 };
