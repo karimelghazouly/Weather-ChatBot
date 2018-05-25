@@ -1,10 +1,11 @@
 const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
-var fb_token='2ecd56ce6c9388693566b68af63b443b';
+var fb_token='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
 const SendResponse = (idx, txt) => {
  request({
- url: 'https://graph.facebook.com/v2.6/me/messages?access_token=2ecd56ce6c9388693566b68af63b443b',
+ Content-Type: "application/json",
+ url: 'https://graph.facebook.com/v2.6/me/messages?access_token=EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD',
  messaging_type:"RESPONSE",
  method: 'POST',
  json: {
