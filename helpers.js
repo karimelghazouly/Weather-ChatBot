@@ -2,7 +2,7 @@ const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
 var fb_token='2ecd56ce6c9388693566b68af63b443b';
-exports.SendResponse=function(idx,txt)
+SendResponse=function(idx,txt)
 {
 	console.log("ana ba send respone 5od balk");
 	var send=function(idx,txt){
