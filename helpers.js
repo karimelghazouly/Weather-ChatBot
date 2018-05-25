@@ -39,7 +39,8 @@ exports.SendText=function(txt,id)
     	else
     	{
     		cityname=par['geo-city'];
-    		
+    		console.log("city = "+cityname);
+
     	}
 	});
 	req.on('error', function(error) {
