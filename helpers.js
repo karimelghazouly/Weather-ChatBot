@@ -14,8 +14,8 @@ SendResponse=function(idx,txt)
 			 message: { txt },
 			 }
 			 });
+		console.log("hi ana 5lst el response");
 	};
-	console.log("hi ana 5lst el response");
 }
 
 exports.SendText=function(txt,id)
