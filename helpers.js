@@ -4,18 +4,16 @@ const request = require('request');
 var fb_token='2ecd56ce6c9388693566b68af63b443b';
 SendResponse=function(idx,txt)
 {
-	var send=function(idx,txt){
-		request({
-			 url: 'https://graph.facebook.com/v2.6/me/messages',
-			 qs: { access_token: fb_token },
-			 method: 'POST',
-			 json: {
-			 recipient: { id: idx },
-			 message: { txt },
-			 }
-			 });
-		console.log("hi ana 5lst el response");
-	};
+	request({
+		 url: 'https://graph.facebook.com/v2.6/me/messages',
+		 qs: { access_token: fb_token },
+		 method: 'POST',
+		 json: {
+		 recipient: { id: idx },
+		 message: { txt },
+		 }
+		 });
+	console.log("hi ana 5lst el response");
 }
 
 exports.SendText=function(txt,id)
