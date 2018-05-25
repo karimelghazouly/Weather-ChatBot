@@ -2,19 +2,18 @@ const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
 var fb_token='2ecd56ce6c9388693566b68af63b443b';
-SendResponse=function(idx,txt)
-{
-	request({
-		 url: 'https://graph.facebook.com/v2.6/me/messages',
-		 qs: { access_token: fb_token },
-		 method: 'POST',
-		 json: {
-		 recipient: { id: idx },
-		 message: { txt },
-		 }
-		 });
-	console.log("hi ana 5lst el response");
-}
+const SendResponse = (idx, txt) => {
+ request({
+ url: 'https://graph.facebook.com/v2.6/me/messages',
+ qs: { access_token: fb_token },
+ method: 'POST',
+ json: {
+ recipient: { id: idx },
+ message: { txt },
+ }
+ });
+ console.log("5lsna");
+};
 
 exports.SendText=function(txt,id)
 {
