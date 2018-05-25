@@ -17,7 +17,7 @@ app.post('/webhook', (req, res) => {
   if (body.object === 'page') {
     body.entry.forEach(function(entry) {
       let webhook_event = entry.messaging[0];
-      let m = webhook_evente['text']
+      let m = webhook_event['text']
   	  console.log("m === "+m);
       console.log(webhook_event);
     });
