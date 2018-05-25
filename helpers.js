@@ -11,7 +11,8 @@ exports.SendText=function(txt)
     	console.log(response);
     	var res=response['result'];
     	var par=res['parameters'];
-    	console.log('keys = '+keys(par).length);
+    	var count = Object.keys(par).length;
+    	console.log('keys = '+count);
 	});
 	req.on('error', function(error) {
 	    console.log(error);
