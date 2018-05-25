@@ -19,10 +19,9 @@ const SendResponse = (senderId, text) => {
  console.log("done");
 };
 const GetWeatherByCityName = () => {
- request('http://www.google.com', function (error, response, body) {
-  console.log('error:', error); // Print the error if one occurred
-  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-  console.log('body:', body); // Print the HTML for the Google homepage.
+ request('api.openweathermap.org/data/2.5/weather?q='+cityname, function (error, response, body) {
+  console.log('error:', error); 
+  console.log('statusCode:', response && response.statusCode); 
 });
  
 };
@@ -35,6 +34,10 @@ exports.SendText=function(txt,id)
 	})
 	req.on('response', function(response) {
     	console.log(response);
+    	cityname="";
+    	long=0;
+    	lat=0;
+    	countryname="";
     	var res=response['result'];
     	var par=res['parameters'];
     	var count = Object.keys(par).length;
@@ -50,7 +53,10 @@ exports.SendText=function(txt,id)
     		countryname=par['geo-country'];
     		lat=par['lat'];
     		long=par[long];
-    		
+			if(cityname!='')
+			{
+				GetWeatherByCityName();
+			}    		
 
     	}
 	});
