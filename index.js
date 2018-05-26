@@ -5,6 +5,7 @@ var app = express();
 var txt=""
 var id=0
 var helper = require('./helpers');
+var dbo;
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
@@ -56,14 +57,23 @@ const dbName = 'users';
 
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
-  var dbo = db.db(dbName);
+  dbo = db.db(dbName);
   console.log("connected to mlab");
+  var myobj = { name: "Testing user", FBID: "123123" };
   dbo.createCollection("users-ids", function(err, res) {
     if (err) throw err;
-    console.log("Collection created!");
+    console.log("Collection users-ids created!");
     db.close();
   });
+  InsertDoc("users-ids",myobj);
 }); 
 
+function InsertDoc(collection_name,obj){
+	dbo.collection(collection_name).insertOne(obj, function(err, res) {
+    if (err) throw err;
+    console.log("1 document inserted");
+    db.close();
+  });
+}
 
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
