@@ -28,6 +28,7 @@ function GetWeatherByCityName() {
   var temp=JSON.stringify(c.main.temp);
   var desc=JSON.stringify(c.weather[0].description);
   last ="description:"+desc+" with temperature : "+temp;
+  console.log("last fo2 = "+last);
 });
  
 };
@@ -62,6 +63,7 @@ exports.SendText=function(txt,id)
 			if(cityname!='')
 			{
 				GetWeatherByCityName();
+				console.log("last tht = "+last);
 				var ret=last;
 				console.log("ret="+last);
 				SendResponse(id,ret);
