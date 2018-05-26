@@ -51,21 +51,19 @@ app.get('/webhook', (req, res) => {
 });
 
 const MongoClient = require('mongodb').MongoClient;
-const assert = require('assert');
-const user='karimelghazouly';
-const password='1234567gg';
-const url = f('mongodb://%s:%s@ds237610.mlab.com:37610/users',user,password);
-
+const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
 const dbName = 'users';
 
-MongoClient.connect(url, function(err, client) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
-
-  const db = client.db(dbName);
-
-  client.close();
-});
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db(dbName);
+  console.log("connected to mlab");
+  dbo.createCollection("users-ids", function(err, res) {
+    if (err) throw err;
+    console.log("Collection created!");
+    db.close();
+  });
+}); 
 
 
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
