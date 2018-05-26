@@ -32,7 +32,7 @@ function GetWeatherByCityName(id) {
 
 });
 
- /*function GetWeatherByCoord(id) {
+ function GetWeatherByCoord(id) {
  request('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   console.log('error:', error); 
   console.log('statusCode:', response && response.statusCode); 
@@ -44,7 +44,7 @@ function GetWeatherByCityName(id) {
   console.log("last  = "+last);
   SendResponse(id,last);
 
-});*/
+});
  
 };
 exports.SendText=function(txt,id)
@@ -81,7 +81,8 @@ exports.SendText=function(txt,id)
 			}
 			if(lat!=''&&long!='')
 			{
-				//GetWeatherByCoord(id);
+				console.log("lat = "+lat+" long = "+long);
+				GetWeatherByCoord(id);
 			}
 
     	}
