@@ -38,15 +38,15 @@ function GetWeatherByCoord(id) {
 	console.log('error:', error); 
 	console.log('statusCode:', response && response.statusCode); 
 	console.log('body:',body);
-	var c=JSON.parse(body);
+	/*var c=JSON.parse(body);
 	var temp=JSON.stringify(c.main.temp);
 	var desc=JSON.stringify(c.weather[0].description);
 	var last ="description:"+desc+" with temperature : "+temp;
 	console.log("last  = "+last);
-	SendResponse(id,last);
+	SendResponse(id,last);*/
 });
 }
- 
+
 exports.SendText=function(txt,id)
 {
 	console.log("------------------------>sending text to api ai");
