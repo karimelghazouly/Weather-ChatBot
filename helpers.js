@@ -76,9 +76,13 @@ exports.SendText=function(txt,id)
     		lat=par['lat'];
     		long=par[long];
 			if(cityname!='')
+			{
 				GetWeatherByCityName(id);
+			}
 			if(lat!=''&&long!='')
+			{
 				GetWeatherByCoord(id);
+			}
 
     	}
 	});
