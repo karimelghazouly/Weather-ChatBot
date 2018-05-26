@@ -35,6 +35,8 @@ function GetWeatherByCityName(id) {
  
 function GetWeatherByCoord(id) {
 	request('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
+	var s= 'http://api.openweathermap.org/data/2.5/weather?lat='+lat+'lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530';
+	console.log("s ="+s);
 	console.log("foooo2 lat = "+lat+" long = "+long);
 	console.log('error:', error); 
 	console.log('statusCode:', response && response.statusCode); 
