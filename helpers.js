@@ -24,8 +24,8 @@ const GetWeatherByCityName = () => {
   console.log('statusCode:', response && response.statusCode); 
   console.log('resp :',response);
   console.log("body : "+body);
-  console.log("main : "+body.main);
-  console.log("wea :"+body.weather);
+  console.log("main : "+body['coord']);
+  console.log("wea :"+body['temp']);
   //var wea=body['weather'];
   //console.log("weather = "+wea);
   //var desc=wea['description'];
