@@ -7,6 +7,7 @@ var long=0;
 var lat=0;
 var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
 const SendResponse = (senderId, text) => {
+ console.log("sending response");
  request({
  url: 'https://graph.facebook.com/v2.6/393368691140430/messages?access_token=EAACaCYfZCz74BALYXfZAjFsQUxlWM0UfiZAob8VqtEPl9P5dEvaGU4wzW46WqCcf3oWoDjKTAzZBdJe75zR6T8BrQItvzLZC6u6LWHq8fIzEpqTU3kicvHQwaEm6cX5NAVGpleASe28bbULuAChxfH5tPyvmPV30Cu8l6VoeC5wZDZD',
  messaging_type: "RESPONSE",
@@ -25,8 +26,6 @@ const GetWeatherByCityName = () => {
   var c=JSON.parse(body);
   var temp=JSON.stringify(c.main.temp);
   var desc=JSON.stringify(c.weather[0].description);
-  console.log('temp = '+temp);
-  console.log('desc = '+desc);
   return ("description:"+desc+" with temperature : "+temp);
 });
  
@@ -62,6 +61,7 @@ exports.SendText=function(txt,id)
 			if(cityname!='')
 			{
 				var ret=GetWeatherByCityName();
+				console.log("ret="+ret);
 				SendResponse(id,ret);
 			}    		
 
