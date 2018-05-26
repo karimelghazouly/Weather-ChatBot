@@ -26,7 +26,8 @@ function GetWeatherByCityName() {
   var c=JSON.parse(body);
   var temp=JSON.stringify(c.main.temp);
   var desc=JSON.stringify(c.weather[0].description);
-  return ("description:"+desc+" with temperature : "+temp);
+  var last ="description:"+desc+" with temperature : "+temp;
+  return last;
 });
  
 };
