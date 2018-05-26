@@ -74,7 +74,7 @@ exports.SendText=function(txt,id)
     		cityname=par['geo-city'];
     		countryname=par['geo-country'];
     		lat=par['lat'];
-    		long=par[long];
+    		long=par['long'];
 			if(cityname!='')
 			{
 				GetWeatherByCityName(id);
