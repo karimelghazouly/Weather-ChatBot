@@ -5,7 +5,6 @@ var cityname="";
 var countryname="";
 var long=0;
 var lat=0;
-var last="";
 var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
 const SendResponse = (senderId, text) => {
  console.log("sending response");
@@ -20,15 +19,17 @@ const SendResponse = (senderId, text) => {
  });
  console.log("done");
 };
-function GetWeatherByCityName() {
+function GetWeatherByCityName(id) {
  request('http://api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   //console.log('error:', error); 
   //console.log('statusCode:', response && response.statusCode); 
   var c=JSON.parse(body);
   var temp=JSON.stringify(c.main.temp);
   var desc=JSON.stringify(c.weather[0].description);
-  last ="description:"+desc+" with temperature : "+temp;
-  console.log("last fo2 = "+last);
+  var last ="description:"+desc+" with temperature : "+temp;
+  console.log("last  = "+last);
+  SendResponse(id,last);
+
 });
  
 };
@@ -62,11 +63,7 @@ exports.SendText=function(txt,id)
     		long=par[long];
 			if(cityname!='')
 			{
-				GetWeatherByCityName();
-				console.log("last tht = "+last);
-				var ret=last;
-				console.log("ret="+last);
-				SendResponse(id,ret);
+				GetWeatherByCityName(id);
 			}    		
 
     	}
