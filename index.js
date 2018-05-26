@@ -52,8 +52,9 @@ app.get('/webhook', (req, res) => {
 
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
-
-const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
+const user='karimelghazouly';
+const password='1234567gg';
+const url = f('mongodb://%s:%s@ds237610.mlab.com:37610/users',user,password);
 
 const dbName = 'users';
 
