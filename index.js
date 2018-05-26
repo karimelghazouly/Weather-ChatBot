@@ -65,10 +65,10 @@ MongoClient.connect(url, function(err, db) {
     console.log("Collection users-ids created!");
     db.close();
   });
-  InsertDoc("users-ids",myobj);
+  InsertDoc("users-ids",myobj,db);
 }); 
 
-function InsertDoc(collection_name,obj){
+function InsertDoc(collection_name,obj,db){
 	dbo.collection(collection_name).insertOne(obj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
