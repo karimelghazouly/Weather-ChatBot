@@ -31,22 +31,22 @@ function GetWeatherByCityName(id) {
   SendResponse(id,last);
 
 });
-
- function GetWeatherByCoord(id) {
- request('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
-  console.log('error:', error); 
-  console.log('statusCode:', response && response.statusCode); 
-  console.log('body:',body);
-  var c=JSON.parse(body);
-  var temp=JSON.stringify(c.main.temp);
-  var desc=JSON.stringify(c.weather[0].description);
-  var last ="description:"+desc+" with temperature : "+temp;
-  console.log("last  = "+last);
-  SendResponse(id,last);
-
-});
+}
  
-};
+function GetWeatherByCoord(id) {
+	request('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
+	console.log('error:', error); 
+	console.log('statusCode:', response && response.statusCode); 
+	console.log('body:',body);
+	var c=JSON.parse(body);
+	var temp=JSON.stringify(c.main.temp);
+	var desc=JSON.stringify(c.weather[0].description);
+	var last ="description:"+desc+" with temperature : "+temp;
+	console.log("last  = "+last);
+	SendResponse(id,last);
+});
+}
+ 
 exports.SendText=function(txt,id)
 {
 	console.log("------------------------>sending text to api ai");
