@@ -27,15 +27,7 @@ const GetWeatherByCityName = () => {
   var desc=JSON.stringify(c.weather[0].description);
   console.log('temp = '+temp);
   console.log('desc = '+desc);
-  console.log("body : "+body);
-  console.log("main : "+body[c]);
-  console.log("wea :"+body['"main"']);
-  //var wea=body['weather'];
-  //console.log("weather = "+wea);
-  //var desc=wea['description'];
-  //var maain=body['main'];
-  //var temp=maain['temp'];
-  //return ("description:"+desc+" Temperature : "+temp);
+  return ("description:"+desc+" with temperature : "+temp);
 });
  
 };
