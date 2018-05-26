@@ -22,9 +22,10 @@ const GetWeatherByCityName = () => {
  request('http://api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   console.log('error:', error); 
   console.log('statusCode:', response && response.statusCode); 
+  var c=JSON.parse(body);
+  console.log('c = '+c);
   console.log('resp :',response);
   console.log("body : "+body);
-  var c = '"'+"coord"+'"';
   console.log("main : "+body[c]);
   console.log("wea :"+body['"main"']);
   //var wea=body['weather'];
