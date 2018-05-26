@@ -23,7 +23,8 @@ const GetWeatherByCityName = () => {
   console.log('error:', error); 
   console.log('statusCode:', response && response.statusCode); 
   var c=JSON.parse(body);
-  console.log('c = '+c);
+  console.log('c = '+c['main']);
+  console.log('c = '+c['coord']);
   console.log("body : "+body);
   console.log("main : "+body[c]);
   console.log("wea :"+body['"main"']);
