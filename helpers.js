@@ -23,6 +23,7 @@ function GetWeatherByCityName(id) {
  request('http://api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   //console.log('error:', error); 
   //console.log('statusCode:', response && response.statusCode); 
+  console.log("body : "+body);
   var c=JSON.parse(body);
   var temp=JSON.stringify(c.main.temp);
   var desc=JSON.stringify(c.weather[0].description);
