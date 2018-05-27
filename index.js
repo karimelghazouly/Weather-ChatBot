@@ -6,6 +6,7 @@ var txt=""
 var id=0
 var helper = require('./helpers');
 var dbo;
+var DB;
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
@@ -58,6 +59,7 @@ const dbName = 'users';
 MongoClient.connect(url, function(err, db) {
   if (err) throw err;
   dbo = db.db(dbName);
+  DB=db;
   console.log("connected to mlab");
   var myobj = { name: "Testing user", FBID: "123123" };
   dbo.createCollection("users-ids", function(err, res) {
@@ -65,14 +67,14 @@ MongoClient.connect(url, function(err, db) {
     console.log("Collection users-ids created!");
     db.close();
   });
-  InsertDoc("users-ids",myobj,db);
+  InsertDoc("users-ids",myobj);
 }); 
 
-function InsertDoc(collection_name,obj,db){
+function InsertDoc(collection_name,obj){
 	dbo.collection(collection_name).insertOne(obj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
-    db.close();
+    DB.close();
   });
 }
 
