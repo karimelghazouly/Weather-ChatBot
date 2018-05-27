@@ -79,7 +79,6 @@ function InsertDoc(collection_name,obj){
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
 	  dbo = db.db(dbName);
-	  console.log("dbo",dbo);
 	  DB=db;
 	  console.log("connected to mlab");
 	  dbo.createCollection("users", function(err, res) {
@@ -108,25 +107,20 @@ function findDoc(collection_name,obj)
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
 	  dbo = db.db(dbName);
-	  console.log("dbo",dbo);
 	  DB=db;
-	  console.log("connected to mlab");
 	  dbo.createCollection("users", function(err, res) {
 	    if (err) throw err;
 	    console.log("Collection users created!");
 	  });
+	  dbo.collection(collection_name).find(obj).toArray(function(err, result) {
+	    if (err) console.log("err = ",err);
+	    console.log("result = ",result);
+	    if(result.length==0)
+	    	return 0;
+	    else return result;
+	    DB.close();
+	  	});
 	}); 	
-	console.log("connected",dbo);
-	console.log("finding");
-	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
-    if (err) console.log("err = ",err);
-    console.log("result = ",result);
-    if(result.length==0)
-    	return 0;
-    else return result;
-    DB.close();
-  	});
-
 }
 
-app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
+app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));x
