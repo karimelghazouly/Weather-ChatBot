@@ -29,6 +29,7 @@ app.post('/webhook', (req, res) => {
     });
     res.status(200).send('EVENT_RECEIVED');
     var check=CheckNewUser("users",{id:id});
+    conole.log("check : "+check);
     if(check==1)
     {
     	InsertDoc("users",{id:id});
