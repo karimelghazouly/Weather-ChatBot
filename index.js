@@ -78,7 +78,6 @@ MongoClient.connect(url, function(err, db) {
   dbo.createCollection("users", function(err, res) {
     if (err) throw err;
     console.log("Collection users created!");
-    db.close();
   });
   //InsertDoc("users",myobj);
   //findDoc("users");
@@ -88,7 +87,6 @@ function InsertDoc(collection_name,obj){
 	dbo.collection(collection_name).insertOne(obj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
-    DB.close();
   });
 }
 
@@ -107,7 +105,6 @@ function findDoc(collection_name,obj)
     if(result.length==0)
     	return 0;
     else return result;
-    DB.close();
   });
 }
 
