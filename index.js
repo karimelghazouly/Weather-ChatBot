@@ -39,7 +39,7 @@ app.post('/webhook', (req, res) => {
     else 
     {
     	var u = findDoc("users",{id:id});
-    	print(u);
+    	console.log(u);
     	helper.SendText(txt,id);
     }
   } else {
