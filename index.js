@@ -93,6 +93,8 @@ function InsertDoc(collection_name,obj){
 }
 
 function CheckNewUser(collection_name,obj){
+	var ret = findDoc(collection_name,obj);
+	console.log("ret = "+ret);
 	if(findDoc(collection_name,obj)==0)return 1;
 	else return 0;
 }
