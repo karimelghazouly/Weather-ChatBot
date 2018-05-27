@@ -79,9 +79,9 @@ function InsertDoc(collection_name,obj){
   });
 }
 
-function findDoc()
+function findDoc(collection_name)
 {
-	dbo.collection("customers").find({name: "Testing user"}).toArray(function(err, result) {
+	dbo.collection(collection_name).find({name: "Testing user"}).toArray(function(err, result) {
     if (err) throw err;
     console.log(" result = "+result);
     DB.close();
