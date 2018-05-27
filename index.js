@@ -81,7 +81,8 @@ function InsertDoc(collection_name,obj){
   });
 }
 function CheckNewUser(collection_name,obj){
-	return (!findDoc(collection_name,obj));
+	if(findDoc(collection_name,obj)==0)return 1;
+	else return 0;
 }
 function findDoc(collection_name,obj)
 {
