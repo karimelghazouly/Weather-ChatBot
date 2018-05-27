@@ -61,7 +61,7 @@ MongoClient.connect(url, function(err, db) {
   dbo = db.db(dbName);
   DB=db;
   console.log("connected to mlab");
-  var objj = { name: "Testing userasd", FBID: "123123" };
+  var objj = { name: "Testing user", FBID: "123123" };
   dbo.createCollection("users-ids", function(err, res) {
     if (err) throw err;
     console.log("Collection users-ids created!");
