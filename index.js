@@ -96,6 +96,7 @@ function InsertDoc(collection_name,obj){
 }
 
 function CheckNewUser(collection_name,obj){
+	console.log("checking....!");
 	var ret = findDoc(collection_name,obj);
 	console.log("ret = "+ret);
 	if(ret==0)return 1;
@@ -104,7 +105,10 @@ function CheckNewUser(collection_name,obj){
 
 function findDoc(collection_name,obj)
 {
+	console.log("connecting");
 	conn();
+	console.log("connected");
+	console.log("finding");
 	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
     if (err) console.log("err = ",err);
     console.log("result = ",result);
