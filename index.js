@@ -105,9 +105,9 @@ function CheckNewUser(collection_name,obj){
 
 function findDoc(collection_name,obj)
 {
-	console.log("connecting");
+	console.log("connecting",dbo);
 	conn();
-	console.log("connected");
+	console.log("connected",dbo);
 	console.log("finding");
 	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
     if (err) console.log("err = ",err);
