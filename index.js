@@ -102,7 +102,7 @@ function CheckNewUser(collection_name,obj){
 function findDoc(collection_name,obj)
 {
 	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
-    if (err) throw err;
+    if (err) console.log("err = ",err);
     console.log("result = ",result);
     if(result.length==0)
     	return 0;
