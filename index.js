@@ -28,7 +28,19 @@ app.post('/webhook', (req, res) => {
   	  console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
-    helper.SendText(txt,id);
+    var check=CheckNewUser("users",{id:id});
+    if(check==1)
+    {
+    	InsertDoc("users",{id:id});
+    	var mess="Hi, my name is hoksha i'm a weather bot and i can help you finding the weather in your country pick what you can dress today and if you are travelling check what is the weather in your destination, as i can see you are a new user so please tell me what is the city you live in ?!";
+    	helper.SendResponse(id,mess);
+    }
+    else 
+    {
+    	var u = findDoc("users",{id:id});
+    	print(u);
+    	helper.SendText(txt,id);
+    }
   } else {
     res.sendStatus(404);
   }
@@ -62,15 +74,13 @@ MongoClient.connect(url, function(err, db) {
   DB=db;
   console.log("connected to mlab");
   var objj = { name: "Testing user", FBID: "123123" };
-  dbo.createCollection("users-ids", function(err, res) {
+  dbo.createCollection("users", function(err, res) {
     if (err) throw err;
-    console.log("Collection users-ids created!");
+    console.log("Collection users created!");
     db.close();
   });
-  //InsertDoc("users-ids",myobj);
-  //findDoc("users-ids");
-  console.log("checking new user : ");
-  console.log(CheckNewUser("users-ids",objj));
+  //InsertDoc("users",myobj);
+  //findDoc("users");
 }); 
 
 function InsertDoc(collection_name,obj){
@@ -80,10 +90,12 @@ function InsertDoc(collection_name,obj){
     DB.close();
   });
 }
+
 function CheckNewUser(collection_name,obj){
 	if(findDoc(collection_name,obj)==0)return 1;
 	else return 0;
 }
+
 function findDoc(collection_name,obj)
 {
 	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
@@ -91,8 +103,9 @@ function findDoc(collection_name,obj)
     console.log(result);
     if(result.length==0)
     	return 0;
-    else return 1;
+    else return result;
     DB.close();
   });
 }
+
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
