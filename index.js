@@ -68,7 +68,7 @@ MongoClient.connect(url, function(err, db) {
     db.close();
   });
   //InsertDoc("users-ids",myobj);
-  findDoc();
+  findDoc("users-ids");
 }); 
 
 function InsertDoc(collection_name,obj){
