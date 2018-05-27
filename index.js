@@ -71,15 +71,15 @@ const dbName = 'users';
 const objj = { name: "Testing user", FBID: "123123" };
 function conn(collection_name,obj,callback)
 {
-	MongoClient.connect(url, function(err, db) {
+	return (MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
 	  dbo = db.db(dbName);
 	  DB=db;
 	  console.log("connected to mlab");
 	  //InsertDoc("users",myobj);
 	  //findDoc("users");
-	  callback(collection_name,obj);
-	}); 
+	  return (callback(collection_name,obj));
+	}));
 
 }
 
