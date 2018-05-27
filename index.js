@@ -74,6 +74,7 @@ function conn()
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
 	  dbo = db.db(dbName);
+	  console.log("dbo",dbo);
 	  DB=db;
 	  console.log("connected to mlab");
 	  dbo.createCollection("users", function(err, res) {
