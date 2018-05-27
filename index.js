@@ -78,4 +78,12 @@ function InsertDoc(collection_name,obj){
   });
 }
 
+function findDoc()
+{
+	dbo.collection("customers").find({name: "Testing user"}).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(" result = "+result);
+    DB.close();
+  });
+}
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
