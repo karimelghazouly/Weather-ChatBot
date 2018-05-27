@@ -71,6 +71,11 @@ const dbName = 'users';
 const objj = { name: "Testing user", FBID: "123123" };
 function conn()
 {
+	
+}
+
+
+function InsertDoc(collection_name,obj){
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
 	  dbo = db.db(dbName);
@@ -81,14 +86,7 @@ function conn()
 	    if (err) throw err;
 	    console.log("Collection users created!");
 	  });
-	  //InsertDoc("users",myobj);
-	  //findDoc("users");
 	}); 	
-}
-
-
-function InsertDoc(collection_name,obj){
-	conn();
 	dbo.collection(collection_name).insertOne(obj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
@@ -107,7 +105,17 @@ function CheckNewUser(collection_name,obj){
 function findDoc(collection_name,obj)
 {
 	console.log("connecting",dbo);
-	conn();
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  dbo = db.db(dbName);
+	  console.log("dbo",dbo);
+	  DB=db;
+	  console.log("connected to mlab");
+	  dbo.createCollection("users", function(err, res) {
+	    if (err) throw err;
+	    console.log("Collection users created!");
+	  });
+	}); 	
 	console.log("connected",dbo);
 	console.log("finding");
 	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
