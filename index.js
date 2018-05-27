@@ -61,14 +61,15 @@ MongoClient.connect(url, function(err, db) {
   dbo = db.db(dbName);
   DB=db;
   console.log("connected to mlab");
-  var myobj = { name: "Testing user", FBID: "123123" };
+  var objj = { name: "Testing userasd", FBID: "123123" };
   dbo.createCollection("users-ids", function(err, res) {
     if (err) throw err;
     console.log("Collection users-ids created!");
     db.close();
   });
   //InsertDoc("users-ids",myobj);
-  findDoc("users-ids");
+  //findDoc("users-ids");
+  console.log(CheckNewUser("users-ids",objj));
 }); 
 
 function InsertDoc(collection_name,obj){
@@ -78,14 +79,17 @@ function InsertDoc(collection_name,obj){
     DB.close();
   });
 }
-
-function findDoc(collection_name)
+function CheckNewUser(collection_name,obj){
+	return (!findDoc(collection_name,obj));
+}
+function findDoc(collection_name,obj)
 {
-	dbo.collection(collection_name).find({name: "Testing userasdsa"}).toArray(function(err, result) {
+	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
     if (err) throw err;
     console.log(result);
     if(result.length==0)
-    	console.log("fadyaa");
+    	return 0;
+    else return 1;
     DB.close();
   });
 }
