@@ -104,7 +104,7 @@ function CheckNewUser(collection_name,obj){
 function findDoc(collection_name,obj)
 {
 	console.log("connecting");
-	conn(collection_name,obj,function(collection_name,obj){
+	return(conn(collection_name,obj,function(collection_name,obj){
 		dbo.collection(collection_name).find(obj).toArray(function(err, result) {
 	    if (err) console.log("err = ",err);
 	    console.log("result = ",result);
@@ -113,7 +113,7 @@ function findDoc(collection_name,obj)
 	    else return result;
 	    DB.close();
 	  	});
-	});
+	}));
 	console.log("connected");
 
 	
