@@ -69,20 +69,16 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
 const dbName = 'users';
 const objj = { name: "Testing user", FBID: "123123" };
-function conn(callback)
+function conn(collection_name,obj,callback)
 {
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
 	  dbo = db.db(dbName);
 	  DB=db;
 	  console.log("connected to mlab");
-	  dbo.createCollection("users", function(err, res) {
-	    if (err) throw err;
-	    console.log("Collection users created!");
-	  });
 	  //InsertDoc("users",myobj);
 	  //findDoc("users");
-	  callback();
+	  callback(collection_name,obj);
 	}); 
 
 }
@@ -108,7 +104,7 @@ function CheckNewUser(collection_name,obj){
 function findDoc(collection_name,obj)
 {
 	console.log("connecting");
-	conn(function(collection_name,obj){
+	conn(collection_name,obj,function(collection_name,obj){
 		dbo.collection(collection_name).find(obj).toArray(function(err, result) {
 	    if (err) console.log("err = ",err);
 	    console.log("result = ",result);
