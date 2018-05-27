@@ -91,8 +91,8 @@ function InsertDoc(collection_name,obj){
 	dbo.collection(collection_name).insertOne(obj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
+    DB.close();
   	});
-	DB.close();
 }
 
 function CheckNewUser(collection_name,obj){
@@ -111,8 +111,9 @@ function findDoc(collection_name,obj)
     if(result.length==0)
     	return 0;
     else return result;
+    DB.close();
   	});
-	DB.close();
+
 }
 
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
