@@ -82,8 +82,9 @@ function conn(callback)
 	  });
 	  //InsertDoc("users",myobj);
 	  //findDoc("users");
+	  callback();
 	}); 
-	callback();	
+
 }
 
 
