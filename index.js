@@ -113,6 +113,7 @@ function findDoc(collection_name,obj)
 	    console.log("Collection users created!");
 	  });
 	  dbo.collection(collection_name).find(obj).toArray(function(err, result) {
+	  	console.log("ay haga");
 	    if (err) console.log("err = ",err);
 	    console.log("result = ",result);
 	    if(result.length==0)
