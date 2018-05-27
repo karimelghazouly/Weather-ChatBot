@@ -68,26 +68,31 @@ app.get('/webhook', (req, res) => {
 const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
 const dbName = 'users';
+const objj = { name: "Testing user", FBID: "123123" };
+function conn()
+{
+	MongoClient.connect(url, function(err, db) {
+	  if (err) throw err;
+	  dbo = db.db(dbName);
+	  DB=db;
+	  console.log("connected to mlab");
+	  dbo.createCollection("users", function(err, res) {
+	    if (err) throw err;
+	    console.log("Collection users created!");
+	  });
+	  //InsertDoc("users",myobj);
+	  //findDoc("users");
+	}); 	
+}
 
-MongoClient.connect(url, function(err, db) {
-  if (err) throw err;
-  dbo = db.db(dbName);
-  DB=db;
-  console.log("connected to mlab");
-  var objj = { name: "Testing user", FBID: "123123" };
-  dbo.createCollection("users", function(err, res) {
-    if (err) throw err;
-    console.log("Collection users created!");
-  });
-  //InsertDoc("users",myobj);
-  //findDoc("users");
-}); 
 
 function InsertDoc(collection_name,obj){
+	conn();
 	dbo.collection(collection_name).insertOne(obj, function(err, res) {
     if (err) throw err;
     console.log("1 document inserted");
-  });
+  	});
+	DB.close();
 }
 
 function CheckNewUser(collection_name,obj){
@@ -99,13 +104,15 @@ function CheckNewUser(collection_name,obj){
 
 function findDoc(collection_name,obj)
 {
+	conn();
 	dbo.collection(collection_name).find(obj).toArray(function(err, result) {
     if (err) console.log("err = ",err);
     console.log("result = ",result);
     if(result.length==0)
     	return 0;
     else return result;
-  });
+  	});
+	DB.close();
 }
 
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
