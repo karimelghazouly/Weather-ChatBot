@@ -69,6 +69,7 @@ MongoClient.connect(url, function(err, db) {
   });
   //InsertDoc("users-ids",myobj);
   //findDoc("users-ids");
+  console.log("checking new user : ");
   console.log(CheckNewUser("users-ids",objj));
 }); 
 
