@@ -83,7 +83,7 @@ function findDoc(collection_name)
 {
 	dbo.collection(collection_name).find({name: "Testing user"}).toArray(function(err, result) {
     if (err) throw err;
-    console.log(" result = "+result);
+    console.log(result);
     DB.close();
   });
 }
