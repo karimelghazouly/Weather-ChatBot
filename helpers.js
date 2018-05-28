@@ -92,7 +92,7 @@ exports.SendText=function(txt,id,result)
   						SendResponse(id,last);
 					});
 				}
-				else if(lat!=''&&long!='')
+				else if(lat!=''&&long!=''&&lat!=undefined&&long!=undefined)
 				{
 					console.log("weather geo");
 					console.log("lat = "+lat+" long = "+long);
