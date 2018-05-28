@@ -25,6 +25,7 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
+      helper.SendResponse(id,"wlhy function");
       conn('i',{id:id},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
