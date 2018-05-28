@@ -28,8 +28,9 @@ app.post('/webhook', (req, res) => {
       conn('i',{id:id},function(result,idx=id){
       		if(result==null||result.length==0)
       		{
+      			var helperrr = require('./helpers');
       			console.log("idx = "+idx);
-      			helper.SendResponse(id,"fuck u");
+      			helperrr.SendResponse(id,"fuck u");
       		}
       		else
       		{
