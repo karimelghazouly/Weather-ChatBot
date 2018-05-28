@@ -22,7 +22,7 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      helper.SendResponse(txt,id);
+      //helper.SendResponse(id,txt);
       conn('f',{id:id},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
