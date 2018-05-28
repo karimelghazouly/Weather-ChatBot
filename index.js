@@ -2,7 +2,8 @@ var express = require('express')
 const path = require('path')
 var bp=require('body-parser');
 var app = express();
-helper=require('./helpers');
+var helper=require('./helpers');
+var db=require('/db');
 var txt=""
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
@@ -23,12 +24,13 @@ app.post('/webhook', (req, res) => {
       txt=m['text']
       id=webhook_event.sender['id'];
       helper.SendText(id,txt,{city:'hamada'});
-      conn('f',{id:id,city:''},function(result,idx=id,helperrr=helper){
+      db.conn('f',{id:id,city:''},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot , as i can see you are a new user so let me ask you a quesiton ");
-      			helperrr.SendResponse(id,"Please tell me where do you live ?");
+      			db.conn('i',{id:id,city:''},function(){})
+      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot , as i can see you are a new user so let me ask you a quesiton Please tell me where do you live ?");
+
       		}
       		else
       		{
@@ -62,38 +64,6 @@ app.get('/webhook', (req, res) => {
   }
 });
 
-const MongoClient = require('mongodb').MongoClient;
-const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
-const dbName = 'users';
-const objj = { name: "Testing user", FBID: "123123" };
-function conn(op,obj,fun)
-{
-	MongoClient.connect(url, function(err, db) {
-	  if (err) throw err;
-	  var dbo = db.db("users");
-	  if(op=='f')
-	  {
-	  	dbo.collection("users").findOne(obj, function(err, result) {
-		    if (err) throw err;
-		    console.log("result",result);
-		    fun(result);
-		    db.close();
-	  	});	
-	  }
-	  else if(op=='i')
-	  {
-	  	dbo.collection("users").insertOne(obj, function(err, res) {
-		    if (err) throw err;
-		    console.log("insertion complete");
-		    fun();
-		    db.close();
-		});
-	  }
-	  else db.close();
-
-	});
-
-}
 
 
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
