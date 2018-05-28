@@ -65,7 +65,7 @@ exports.SendText=function(txt,id,result)
     	var par=res['parameters'];
     	var count = Object.keys(par).length;
     	var mess=res.fulfillment.speech;
-    	var met=response['metadata'];
+    	var met=res['metadata'];
     	var intent=met['intentName'];
     	if(obj['city']!='')
     	{
