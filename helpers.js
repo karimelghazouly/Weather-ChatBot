@@ -83,9 +83,9 @@ exports.SendText=function(txt,id,result)
 	    			console.log("cityyy");
 	    			SendResponse(id,"what about "+cn+"?");
 	    		}
-				else if(cn!='')
+				else if(cn!=''&&cn!=null&&cn!=undefined)
 				{
-					console.log("weather city");
+					console.log("weather city",cn);
 					GetWeatherByCityName(id,cn,function(temp,desc,id){
 						var last =desc+" with temperature "+temp+" kelvin";
 						console.log("last  = "+last);
