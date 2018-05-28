@@ -3,7 +3,7 @@ const path = require('path')
 var bp=require('body-parser');
 var app = express();
 var helper=require('./helpers');
-var db=require('./db');
+var DB=require('./db');
 var txt=""
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
@@ -24,7 +24,7 @@ app.post('/webhook', (req, res) => {
       txt=m['text']
       id=webhook_event.sender['id'];
       helper.SendText(id,txt,{city:'hamada'});
-      db.conn('f',{id:id,city:''},function(result,idx=id,helperrr=helper){
+      DB.conn('f',{id:id,city:''},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
