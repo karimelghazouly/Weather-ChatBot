@@ -79,9 +79,9 @@ exports.SendText=function(txt,id,result)
 	    		long=par['long'];
 	    		if(intent=='city')
 	    		{
-	    			SendResponse(id,"what about "+cityname+"?");
+	    			SendResponse(id,"what about "+cn+"?");
 	    		}
-				else if(cityname!='')
+				else if(cn!='')
 				{
 					GetWeatherByCityName(id,cn,function(temp,desc,id){
 						var last =desc+" with temperature "+temp+" kelvin";
@@ -124,7 +124,7 @@ exports.SendText=function(txt,id,result)
     			cn=par['geo-city'];
     			if(cn!='')
     			{
-					DB.conn("users",'u',{id:id},{$set:{id:id,city:cityname}},function(){});
+					DB.conn("users",'u',{id:id},{$set:{id:id,city:cn}},function(){});
 					SendResponse(id,"Great now i can help you with the weather in any area in the world , i can also help you to choose what to wear for your outings , how can you do this ? just type your question like what should i wear or what is the weather in any city/Country in the world");
 			    }
     			else
