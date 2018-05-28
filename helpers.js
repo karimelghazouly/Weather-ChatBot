@@ -146,11 +146,16 @@ exports.SendText=function(txt,id,result)
 					DB.conn("users",'u',{id:id},{$set:{id:id,city:cn}},function(){});
 					SendResponse(id,"Great now i can help you with the weather in any area in the world , i can also help you to choose what to wear for your outings , how can you do this ? just type your question like what should i wear or what is the weather in any city/Country in the world");
 			    }
-    			else
-    			{
-    				SendResponse(id,"Please tell me your city");
-    			}
+			    else
+			    {
+			    	SendResponse(id,"I didn't get the city");
+			    }
+    			
     		}
+    		else
+			{
+				SendResponse(id,"Please tell me your city");
+			}
     	}
 
 	});
