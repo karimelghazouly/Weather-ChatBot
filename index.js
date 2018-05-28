@@ -30,7 +30,7 @@ app.post('/webhook', (req, res) => {
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			helperrr.SendResponse(id,"fuck u");
+      			//helperrr.SendResponse(id,"fuck u");
       		}
       		else
       		{
