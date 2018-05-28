@@ -28,7 +28,7 @@ app.post('/webhook', (req, res) => {
       conn('i',{id:id},function(result){
       		if(result==null||result.length==0)
       		{
-      			console.log("hamada el zero");
+      			helper.SendResponse(obj['id'],"fuck u");
       		}
       		else
       		{
@@ -85,7 +85,7 @@ function conn(op,obj,fun)
 	  	dbo.collection("users").insertOne(obj, function(err, res) {
 		    if (err) throw err;
 		    console.log("insertion complete");
-		    fun(result);
+		    fun();
 		    db.close();
 		});
 	  }
