@@ -31,7 +31,7 @@ app.post('/webhook', (req, res) => {
       		}
       		else
       		{
-
+      			console.log("idx = "+idx);
       		}
       })
   	  console.log(webhook_event);
