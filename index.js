@@ -23,7 +23,7 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      DB.conn("Messages","i",{id:id,text:txt,fromto:"User to bot"},{},function());
+      DB.conn("Messages","i",{id:id,text:txt,fromto:"User to bot"},{},function(){});
       DB.conn("users",'f',{id:id},{},function(result,idx=id,helperrr=helper){
       	console.log("result",result);
       		if(result==null||result.length==0)
