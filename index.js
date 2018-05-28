@@ -26,7 +26,7 @@ app.post('/webhook', (req, res) => {
       txt=m['text']
       id=webhook_event.sender['id'];
       conn('f',{id:id},function(result){
-      		if(result.length==0)
+      		if(result==null||result.length==0)
       		{
       			console.log("hamada el zero");
       		}
