@@ -100,7 +100,7 @@ exports.SendText=function(txt,id,result)
     			cityname=par['geo-city'];
     			if(cityname!='')
     			{
-					DB.conn('u',{id:id},{id:id,city:cityname},function(){});
+					DB.conn('u',{id:id},{$set:{id:id,city:cityname}},function(){});
 			    }
     			else
     			{
