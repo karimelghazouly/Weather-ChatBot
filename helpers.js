@@ -100,8 +100,8 @@ exports.SendText=function(txt,id,result)
     			cityname=par['geo-city'];
     			if(cityname!='')
     			{
-    				// kda khalas hwa sagl h3ml update baa
-    			}
+					DB.conn('u',{id:id},{id:id,city:cityname},function(){});
+			    }
     			else
     			{
     				// ab3tlo massage zan
