@@ -76,7 +76,7 @@ function conn(op,obj,fun)
 	  	dbo.collection("users").findOne({obj}, function(err, result) {
 		    if (err) throw err;
 		    console.log("result",result);
-		    fun();
+		    fun(result);
 		    db.close();
 	  	});	
 	  }
