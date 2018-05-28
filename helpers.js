@@ -109,13 +109,25 @@ exports.SendText=function(txt,id,result)
 		    		console.log("obj city = ",obj['city']);
 		    		GetWeatherByCityName(id,obj['city'],function(temp,desc,id){
 		    			var last="";
-		    			if(temp>=1&&temp<=300)
+		    			if(temp<=278)
 		    			{
-		    				last="1st";
+		    				last="it's freezing outside don't go out unless your are going to make snowmen :D, wear every thing you have in your closet";
 		    			}
-		    			else if(temp>=301&&temp<=500)
+		    			else if(temp>=279&&temp<=288)
 		    			{
-		    				last="2nd";
+		    				last="it's very cold oustide maybe you will need 2 or 3 jackets/sweaters ";
+		    			}
+		    			else if(temp>=289&&temp<=295)
+		    			{
+		    				last="it's a bit cold outside maybe a hoodie will do the job";
+		    			}
+		    			else if(temp>=296&&temp<=302)
+		    			{
+		    				last="it's a nice weather today please take me with you out ! :D you can wear a shirt or a t-shirt with no worries";
+		    			}
+		    			else if(temp>=303)
+		    			{
+		    				last="it's hot outside maybe you will need a short ";
 		    			}
 		    			console.log("last  = "+last);
   						SendResponse(id,last);
