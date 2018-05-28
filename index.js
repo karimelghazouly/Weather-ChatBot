@@ -25,10 +25,9 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      conn('i',{id:id},function(result,idx=id){
+      conn('i',{id:id},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
-      			var helperrr = require('./helpers');
       			console.log("idx = "+idx);
       			helperrr.SendResponse(id,"fuck u");
       		}
