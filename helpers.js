@@ -1,12 +1,12 @@
-const ai_token='9cad650e13084baea6efc0fca668b402';
+const ai_token='';
 var app = require('apiai')(ai_token);
 const request = require('request');
 var DB=require('./db');
-var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
+var FACEBOOK_ACCESS_TOKEN='';
 var SendResponse=exports.SendResponse=function(senderId, text){
  console.log("sending response");
  request({
- url: 'https://graph.facebook.com/v2.6/393368691140430/messages?access_token=EAACaCYfZCz74BALYXfZAjFsQUxlWM0UfiZAob8VqtEPl9P5dEvaGU4wzW46WqCcf3oWoDjKTAzZBdJe75zR6T8BrQItvzLZC6u6LWHq8fIzEpqTU3kicvHQwaEm6cX5NAVGpleASe28bbULuAChxfH5tPyvmPV30Cu8l6VoeC5wZDZD',
+ url: 'https://graph.facebook.com/v2.6/393368691140430/messages?access_token=',
  messaging_type: "RESPONSE",
  method: 'POST',
  json: {
