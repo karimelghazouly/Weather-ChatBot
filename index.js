@@ -21,7 +21,7 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      conn('f',{id:id},function(result,idx=id,helperrr=helper){
+      conn('f',{id:id},function(result,idx=id,helperrr=require('./helpers')){
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
