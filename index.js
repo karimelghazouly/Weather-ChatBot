@@ -28,7 +28,7 @@ app.post('/webhook', (req, res) => {
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			db.conn('i',{id:id,city:''},function(){})
+      			DB.conn('i',{id:id,city:''},function(){})
       			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot , as i can see you are a new user so let me ask you a quesiton Please tell me where do you live ?");
 
       		}
