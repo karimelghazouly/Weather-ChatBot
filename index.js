@@ -26,7 +26,7 @@ app.post('/webhook', (req, res) => {
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			//helperrr.SendResponse(id,"fuck u");
+      			helperrr.SendResponse(id,"fuck u");
       		}
       		else
       		{
@@ -36,7 +36,7 @@ app.post('/webhook', (req, res) => {
   	  console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
-    helper.SendResponse(id,txt);
+    //helper.SendResponse(id,txt);
     
   } else {
     res.sendStatus(404);
