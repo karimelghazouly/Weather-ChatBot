@@ -25,11 +25,12 @@ app.post('/webhook', (req, res) => {
       id=webhook_event.sender['id'];
       helper.SendText(id,txt,{city:'hamada'});
       DB.conn('f',{id:id,city:''},{},function(result,idx=id,helperrr=helper){
+      	console.log("result",result);
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
       			DB.conn('i',{id:id,city:''},{},function(){})
-      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot ,As i can see you are a new user ,So Please tell me where do you live ?");
+      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot ,As i can see you are a new user ,So Please tell me where do you live ? ,I hope we can be friends too ! :D");
       		}
       		else
       		{
