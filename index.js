@@ -25,23 +25,20 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
+      conn('f',{id:id},function(result){
+      		if(result.length==0)
+      		{
+      			console.log("hamada el zero");
+      		}
+      		else
+      		{
+
+      		}
+      })
   	  console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
-    var check=CheckNewUser("users",{id:id});
-    console.log("check : "+check);
-    if(check==1)
-    {
-    	InsertDoc("users",{id:id});
-    	var mess="Hi, my name is hoksha i'm a weather bot and i can help you finding the weather in your country pick what you can dress today and if you are travelling check what is the weather in your destination, as i can see you are a new user so please tell me what is the city you live in ?!";
-    	helper.SendResponse(id,mess);
-    }
-    else 
-    {
-    	var u = findDoc("users",{id:id});
-    	console.log(u);
-    	helper.SendText(txt,id);
-    }
+    
   } else {
     res.sendStatus(404);
   }
@@ -69,55 +66,34 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
 const dbName = 'users';
 const objj = { name: "Testing user", FBID: "123123" };
-function conn(collection_name,obj,callback)
+function conn(op,obj,fun)
 {
-	return (MongoClient.connect(url, function(err, db) {
+	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
-	  dbo = db.db(dbName);
-	  DB=db;
-	  console.log("connected to mlab");
-	  //InsertDoc("users",myobj);
-	  //findDoc("users");
-	  return (callback(collection_name,obj));
-	}));
+	  var dbo = db.db("users");
+	  if(op=='f')
+	  {
+	  	dbo.collection("users").findOne({obj}, function(err, result) {
+		    if (err) throw err;
+		    console.log("result",result.name);
+		    fun();
+		    db.close();
+	  	});	
+	  }
+	  else if(op=='i')
+	  {
+	  	dbo.collection("users").insertOne(obj, function(err, res) {
+		    if (err) throw err;
+		    console.log("insertion complete");
+		    fun();
+		    db.close();
+		});
+	  }
+	  else db.close();
+
+	});
 
 }
 
-
-function InsertDoc(collection_name,obj){
-	conn();
-	dbo.collection(collection_name).insertOne(obj, function(err, res) {
-    if (err) throw err;
-    console.log("1 document inserted");
-    DB.close();
-  	});
-}
-
-function CheckNewUser(collection_name,obj){
-	console.log("checking....!");
-	var ret = findDoc(collection_name,obj);
-	console.log("ret = "+ret);
-	if(ret==0)return 1;
-	else return 0;
-}
-
-function findDoc(collection_name,obj)
-{
-	console.log("connecting");
-	return(conn(collection_name,obj,function(collection_name,obj){
-		dbo.collection(collection_name).find(obj).toArray(function(err, result) {
-	    if (err) console.log("err = ",err);
-	    console.log("result = ",result);
-	    if(result.length==0)
-	    	return 0;
-	    else return result;
-	    DB.close();
-	  	});
-	}));
-	console.log("connected");
-
-	
-
-}
 
 app.listen(process.env.PORT || 3000, () => console.log('webhook is running'));
