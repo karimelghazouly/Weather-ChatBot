@@ -73,10 +73,10 @@ function conn(op,obj,fun)
 	  var dbo = db.db("users");
 	  if(op=='f')
 	  {
-	  	dbo.collection("users").findOne({obj}, function(err, result,oobj=obj) {
+	  	dbo.collection("users").findOne({obj}, function(err, result,obj) {
 		    if (err) throw err;
 		    console.log("result",result);
-		    console.log("obj",oobj)
+		    console.log("obj",obj)
 		    fun(result);
 		    db.close();
 	  	});	
