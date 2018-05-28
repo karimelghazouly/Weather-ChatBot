@@ -3,7 +3,7 @@ const path = require('path')
 var bp=require('body-parser');
 var app = express();
 var helper=require('./helpers');
-var DB=require('./db');
+var DB=require('./db.js');
 var txt=""
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
