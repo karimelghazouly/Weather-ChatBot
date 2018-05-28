@@ -80,10 +80,12 @@ exports.SendText=function(txt,id,result)
 	    		long=par['long'];
 	    		if(intent=='city')
 	    		{
+	    			console.log("cityyy");
 	    			SendResponse(id,"what about "+cn+"?");
 	    		}
 				else if(cn!='')
 				{
+					console.log("weather city");
 					GetWeatherByCityName(id,cn,function(temp,desc,id){
 						var last =desc+" with temperature "+temp+" kelvin";
 						console.log("last  = "+last);
@@ -92,15 +94,18 @@ exports.SendText=function(txt,id,result)
 				}
 				else if(lat!=''&&long!='')
 				{
+					console.log("weather geo");
 					console.log("lat = "+lat+" long = "+long);
 					GetWeatherByCoord(id,lat,long);
 				}
 				else if(intent=="weather")
 				{
+					console.log("btngan");
 					SendResponse(id,"I can see you are asking about the weather but i cannot find the city can you recheck the spelling ?");
 				}
 				else if(intent=="clothes")
 		    	{
+		    		console.log("clothes");
 		    		console.log("obj city = ",obj['city']);
 		    		GetWeatherByCityName(id,obj['city'],function(temp,desc,id){
 		    			var last="";
