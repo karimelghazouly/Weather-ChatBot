@@ -2,6 +2,7 @@ var express = require('express')
 const path = require('path')
 var bp=require('body-parser');
 var app = express();
+helper=require('./helpers');
 var txt=""
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
@@ -21,22 +22,22 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      conn('f',{id:id},function(result,idx=id,helperrr=require('./helpers')){
+      helper.SendText(id,txt,{city:'hamada'});
+      conn('f',{id:id,city:''},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			helperrr.SendResponse(id,"fuck u");
+      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot , as i can see you are a new user so let me ask you a quesiton ");
+      			helperrr.SendResponse(id,"Please tell me where do you live ?");
       		}
       		else
       		{
-      			console.log("idx = "+idx);
-      			helperrr.SendResponse(id,"fuck u");
+      			helperrr.SendText(txt,id,result);
       		}
       })
   	  console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
-    require('./helpers').SendResponse(id,txt);
     
   } else {
     res.sendStatus(404);

@@ -48,14 +48,14 @@ exports.GetWeatherByCoord = function(id) {
 });
 }
 
-exports.SendText=function(txt,id)
+exports.SendText=function(txt,id,result)
 {
 	console.log("------------------------>sending text to api ai");
 	console.log("txt = "+txt);
 	var req=app.textRequest(txt,{
 		sessionId:'hamada'
 	})
-	req.on('response', function(response) {
+	req.on('response', function(response,obj=result) {
     	console.log(response);
     	cityname="";
     	long=0;
@@ -65,28 +65,36 @@ exports.SendText=function(txt,id)
     	var par=res['parameters'];
     	var count = Object.keys(par).length;
     	var mess=res.fulfillment.speech;
-    	if(count==0)
+    	if(obj['city']!='')
     	{
-    		console.log("message = "+mess);
-    		SendResponse(id,mess);
+			if(count==0)
+	    	{
+	    		console.log("message = "+mess);
+	    		SendResponse(id,mess);
+	    	}
+	    	else
+	    	{
+	    		cityname=par['geo-city'];
+	    		countryname=par['geo-country'];
+	    		lat=par['lat'];
+	    		long=par['long'];
+				if(cityname!='')
+				{
+					GetWeatherByCityName(id);
+				}
+				if(lat!=''&&long!='')
+				{
+					console.log("lat = "+lat+" long = "+long);
+					GetWeatherByCoord(id);
+				}
+
+	    	}    		
     	}
     	else
     	{
-    		cityname=par['geo-city'];
-    		countryname=par['geo-country'];
-    		lat=par['lat'];
-    		long=par['long'];
-			if(cityname!='')
-			{
-				GetWeatherByCityName(id);
-			}
-			if(lat!=''&&long!='')
-			{
-				console.log("lat = "+lat+" long = "+long);
-				GetWeatherByCoord(id);
-			}
-
+    		
     	}
+
 	});
 	req.on('error', function(error) {
 	    console.log(error);
