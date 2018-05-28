@@ -67,6 +67,7 @@ exports.SendText=function(txt,id,result)
 
     	if(obj['city']!='')
     	{
+    		console.log("user adeem");
 			if(count==0)
 	    	{
 	    		console.log("message = "+mess);
