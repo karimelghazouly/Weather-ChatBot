@@ -85,7 +85,7 @@ function conn(op,obj,fun)
 	  	dbo.collection("users").insertOne(obj, function(err, res) {
 		    if (err) throw err;
 		    console.log("insertion complete");
-		    fun();
+		    fun(result);
 		    db.close();
 		});
 	  }
