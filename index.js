@@ -23,8 +23,7 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      helper.SendText(id,txt,{city:'hamada'});
-      DB.conn('f',{id:id,city:''},{},function(result,idx=id,helperrr=helper){
+      DB.conn('f',{id:id},{},function(result,idx=id,helperrr=helper){
       	console.log("result",result);
       		if(result==null||result.length==0)
       		{
@@ -37,7 +36,7 @@ app.post('/webhook', (req, res) => {
       			helperrr.SendText(txt,id,result);
       		}
       })
-  	  console.log(webhook_event);
+  	  //console.log(webhook_event);
     });
     res.status(200).send('EVENT_RECEIVED');
     
