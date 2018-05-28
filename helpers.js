@@ -1,7 +1,6 @@
 const ai_token='9cad650e13084baea6efc0fca668b402';
 var app = require('apiai')(ai_token);
 const request = require('request');
-var dbf = require('./index');
 var cityname="";
 var countryname="";
 var long=0;
