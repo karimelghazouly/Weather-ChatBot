@@ -20,7 +20,7 @@ var SendResponse=exports.SendResponse=function(senderId, text){
  });
  console.log("done");
 };
-exports.GetWeatherByCityName = function(id) {
+var GetWeatherByCityName=exports.GetWeatherByCityName = function(id) {
  request('http://api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   //console.log('error:', error); 
   //console.log('statusCode:', response && response.statusCode); 
@@ -35,7 +35,7 @@ exports.GetWeatherByCityName = function(id) {
 });
 }
  
-exports.GetWeatherByCoord = function(id) {
+var GetWeatherByCoord=exports.GetWeatherByCoord = function(id) {
 	request('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
 	console.log('error:', error); 
 	console.log('statusCode:', response && response.statusCode); 
@@ -81,11 +81,15 @@ exports.SendText=function(txt,id,result)
 	    		countryname=par['geo-country'];
 	    		lat=par['lat'];
 	    		long=par['long'];
-				if(cityname!='')
+	    		if(intent=='city')
+	    		{
+	    			SendResponse(id,"what about "+cityname+"?");
+	    		}
+				else if(cityname!='')
 				{
 					GetWeatherByCityName(id);
 				}
-				if(lat!=''&&long!='')
+				else if(lat!=''&&long!='')
 				{
 					console.log("lat = "+lat+" long = "+long);
 					GetWeatherByCoord(id);
