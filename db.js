@@ -2,7 +2,7 @@ const MongoClient = require('mongodb').MongoClient;
 const url = 'mongodb://karimelghazouly:1234567gg@ds237610.mlab.com:37610/users';
 const dbName = 'users';
 const objj = { name: "Testing user", FBID: "123123" };
-exports.function conn(op,obj,fun)
+exports.conn=function(op,obj,fun)
 {
 	MongoClient.connect(url, function(err, db) {
 	  if (err) throw err;
