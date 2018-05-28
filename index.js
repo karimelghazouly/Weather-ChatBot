@@ -23,12 +23,13 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      DB.conn('f',{id:id},{},function(result,idx=id,helperrr=helper){
+      DB.conn("Messages","i",{id:id,text:txt,fromto:"User to bot"},{},function());
+      DB.conn("users",'f',{id:id},{},function(result,idx=id,helperrr=helper){
       	console.log("result",result);
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			DB.conn('i',{id:id,city:''},{},function(){})
+      			DB.conn("users",'i',{id:id,city:''},{},function(){})
       			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot ,As i can see you are a new user ,So Please tell me where do you live ?");
       		}
       		else
