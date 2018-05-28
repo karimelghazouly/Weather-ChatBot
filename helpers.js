@@ -100,6 +100,7 @@ exports.SendText=function(txt,id,result)
 				}
 				else if(intent=="clothes")
 		    	{
+		    		console.log("obj city = ",obj['city']);
 		    		GetWeatherByCityName(id,obj['city'],function(temp,desc,id){
 		    			var last="";
 		    			if(temp>=1&&temp<=300)
