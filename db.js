@@ -9,6 +9,7 @@ exports.conn=function(op,obj,nobj,fun)
 	  var dbo = db.db("users");
 	  if(op=='f')
 	  {
+	  	console.log("finding el btngan");
 	  	dbo.collection("users").findOne(obj, function(err, result) {
 		    if (err) throw err;
 		    console.log("result",result);
@@ -18,6 +19,7 @@ exports.conn=function(op,obj,nobj,fun)
 	  }
 	  else if(op=='i')
 	  {
+	  	console.log("inserting el btngan");
 	  	dbo.collection("users").insertOne(obj, function(err, res) {
 		    if (err) throw err;
 		    console.log("insertion complete");
