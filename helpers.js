@@ -18,7 +18,7 @@ var SendResponse=exports.SendResponse=function(senderId, text){
  message: { text:text },
  }
  });
- DB.conn("Messages","i",{id:senderId,text:text,fromto:"bot to user"},{},function());
+ DB.conn("Messages","i",{id:senderId,text:text,fromto:"bot to user"},{},function(){});
  console.log("done");
 };
 var GetWeatherByCityName=exports.GetWeatherByCityName = function(id) {
