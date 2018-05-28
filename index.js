@@ -3,10 +3,7 @@ const path = require('path')
 var bp=require('body-parser');
 var app = express();
 var txt=""
-var id=0
 var helper = require('./helpers');
-var dbo;
-var DB;
 app.use(bp.json());
 app.use(bp.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname, 'public')))
@@ -25,7 +22,7 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      helper.SendResponse(id,"wlhy function");
+      helper.SendResponse(txt,id);
       conn('f',{id:id},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
