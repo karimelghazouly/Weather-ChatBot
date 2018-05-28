@@ -6,7 +6,7 @@ var countryname="";
 var long=0;
 var lat=0;
 var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
-function SendResponse(senderId, text){
+exports.SendResponse=function(senderId, text){
  console.log("sending response");
  request({
  url: 'https://graph.facebook.com/v2.6/393368691140430/messages?access_token=EAACaCYfZCz74BALYXfZAjFsQUxlWM0UfiZAob8VqtEPl9P5dEvaGU4wzW46WqCcf3oWoDjKTAzZBdJe75zR6T8BrQItvzLZC6u6LWHq8fIzEpqTU3kicvHQwaEm6cX5NAVGpleASe28bbULuAChxfH5tPyvmPV30Cu8l6VoeC5wZDZD',
@@ -19,7 +19,7 @@ function SendResponse(senderId, text){
  });
  console.log("done");
 };
-function GetWeatherByCityName(id) {
+exports.GetWeatherByCityName = function(id) {
  request('http://api.openweathermap.org/data/2.5/weather?q='+cityname+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
   //console.log('error:', error); 
   //console.log('statusCode:', response && response.statusCode); 
@@ -34,7 +34,7 @@ function GetWeatherByCityName(id) {
 });
 }
  
-function GetWeatherByCoord(id) {
+exports.GetWeatherByCoord = function(id) {
 	request('http://api.openweathermap.org/data/2.5/weather?lat='+lat+'&lon='+long+'&APPID=ba25db8f381ce66103009bf7b240c530', function (error, response, body) {
 	console.log('error:', error); 
 	console.log('statusCode:', response && response.statusCode); 
