@@ -24,13 +24,12 @@ app.post('/webhook', (req, res) => {
       txt=m['text']
       id=webhook_event.sender['id'];
       helper.SendText(id,txt,{city:'hamada'});
-      DB.conn('f',{id:id,city:''},function(result,idx=id,helperrr=helper){
+      DB.conn('f',{id:id,city:''},{},function(result,idx=id,helperrr=helper){
       		if(result==null||result.length==0)
       		{
       			console.log("idx = "+idx);
-      			DB.conn('i',{id:id,city:''},function(){})
-      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot , as i can see you are a new user so let me ask you a quesiton Please tell me where do you live ?");
-
+      			DB.conn('i',{id:id,city:''},{},function(){})
+      			helperrr.SendResponse(id,"Hello, My name is hoksha i'm a weather bot ,As i can see you are a new user ,So Please tell me where do you live ?");
       		}
       		else
       		{

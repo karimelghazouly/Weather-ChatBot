@@ -5,6 +5,7 @@ var cityname="";
 var countryname="";
 var long=0;
 var lat=0;
+var DB=require('./db');
 var FACEBOOK_ACCESS_TOKEN='EAACEdEose0cBAGtgIVNIS9wene4xKl2MGZAlTmZBacniIPJQ4cgdGfqWEas9onmwlaq4uJ4LbZA5DrSt5zTSggslXhwTfO2yF5kcTFeQZCZCtlrvzjCSuVQUzZBRshMDSm0nUTjVfo7h4xwedfQPyoTz8i9RZBttswHTIC4A0H5OSbFZBu8l9dxfwG4pYKwzI34ZD';
 var SendResponse=exports.SendResponse=function(senderId, text){
  console.log("sending response");
@@ -94,7 +95,18 @@ exports.SendText=function(txt,id,result)
     	}
     	else
     	{
-
+    		if(intent=='city')
+    		{
+    			cityname=par['geo-city'];
+    			if(cityname!='')
+    			{
+    				// kda khalas hwa sagl h3ml update baa
+    			}
+    			else
+    			{
+    				// ab3tlo massage zan
+    			}
+    		}
     	}
 
 	});
