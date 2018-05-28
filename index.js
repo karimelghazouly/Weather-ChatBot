@@ -25,10 +25,11 @@ app.post('/webhook', (req, res) => {
       let m = webhook_event['message']
       txt=m['text']
       id=webhook_event.sender['id'];
-      conn('i',{id:id},function(result){
+      conn('i',{id:id},function(result,idx=id){
       		if(result==null||result.length==0)
       		{
-      			helper.SendResponse(obj['id'],"fuck u");
+      			console.log("idx = "+idx);
+      			helper.SendResponse(id,"fuck u");
       		}
       		else
       		{
@@ -73,10 +74,9 @@ function conn(op,obj,fun)
 	  var dbo = db.db("users");
 	  if(op=='f')
 	  {
-	  	dbo.collection("users").findOne({obj}, function(err, result,obj) {
+	  	dbo.collection("users").findOne(obj, function(err, result) {
 		    if (err) throw err;
 		    console.log("result",result);
-		    console.log("obj",obj);
 		    fun(result);
 		    db.close();
 	  	});	
