@@ -1,5 +1,5 @@
 Hoksha Weather-ChatBot
-A facebook weather chatbot written with Nodejs / Express ,used dialogflow api for text classification and used mongodb .
+A facebook weather chatbot written with Nodejs / Express, used dialogflow api for text classification and used mongodb .
 
 It can detect new user and register them in the database
 ![screenshot from 2018-05-29 17-39-48](https://user-images.githubusercontent.com/24472871/40669941-6ce3104e-6368-11e8-9d2b-3c9067127b2a.png)
